@@ -23,7 +23,7 @@ Chrome Extension ที่ช่วยให้คุณ export รูปจา�
 2. เปิด Chrome แล้วไปที่ `chrome://extensions/`
 3. เปิด "Developer mode" (มุมขวาบน)
 4. คลิก "Load unpacked"
-5. เลือก folder `smart-canva-exporter`
+5. เลือก folder `Xportly-extension`
 
 ## 🚀 Usage
 
@@ -57,7 +57,7 @@ Chrome Extension ที่ช่วยให้คุณ export รูปจา�
 ## 📁 File Structure
 
 ```
-smart-canva-exporter/
+Xportly-extension/
 ├── manifest.json       # Extension manifest
 ├── background.js       # Service worker
 ├── content.js          # Content script + overlay UI
