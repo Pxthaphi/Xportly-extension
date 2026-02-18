@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Canva Exporter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 Smart Export</h1>
+    </header>
+
+    <!-- Status Section -->
+    <div id="status-section" class="section">
+      <div id="status" class="status waiting">
+        <span class="status-icon">⏳</span>
+        <span class="status-text">Waiting for export...</span>
+      </div>
+    </div>
+
+    <!-- Image Info (shown when captured) -->
+    <div id="image-info" class="section hidden">
+      <div class="info-row">
+        <span class="label">Original Size:</span>
+        <span id="original-size" class="value">-</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Dimensions:</span>
+        <span id="dimensions" class="value">-</span>
+      </div>
+    </div>
+
+    <!-- Options Section -->
+    <div id="options-section" class="section hidden">
+      <div class="option-group">
+        <label for="format">Output Format</label>
+        <select id="format">
+          <option value="webp">WebP (recommended)</option>
+          <option value="jpg">JPEG</option>
+          <option value="png">PNG</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label for="max-size">Max File Size (KB)</label>
+        <input type="number" id="max-size" placeholder="Leave empty for no limit" min="10">
+        <span class="hint">Leave empty for best quality</span>
+      </div>
+
+      <div class="option-group">
+        <label for="resize-width">Resize Width (px)</label>
+        <input type="number" id="resize-width" placeholder="Original width" min="100">
+        <span class="hint">Height will scale proportionally</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div id="actions" class="section hidden">
+      <button id="btn-process" class="btn primary">
+        <span class="btn-icon">⚡</span>
+        Optimize & Download
+      </button>
+      <button id="btn-original" class="btn secondary">
+        Download Original
+      </button>
+    </div>
+
+    <!-- Processing State -->
+    <div id="processing" class="section hidden">
+      <div class="processing-indicator">
+        <div class="spinner"></div>
+        <span>Processing image...</span>
+      </div>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result" class="section hidden">
+      <div class="result-card success">
+        <div class="result-header">✅ Optimization Complete</div>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-label">Final Size</span>
+            <span id="final-size" class="stat-value">-</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Saved</span>
+            <span id="saved-percent" class="stat-value">-</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Quality</span>
+            <span id="final-quality" class="stat-value">-</span>
+          </div>
+        </div>
+      </div>
+      <button id="btn-download" class="btn primary">
+        <span class="btn-icon">💾</span>
+        Download Now
+      </button>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="section hidden">
+      <div class="result-card error">
+        <div class="result-header">❌ Error</div>
+        <p id="error-message">Something went wrong</p>
+      </div>
+      <button id="btn-retry" class="btn secondary">Try Again</button>
+      <button id="btn-fallback" class="btn secondary">Download Original</button>
+    </div>
+
+    <!-- Warning State -->
+    <div id="warning" class="section hidden">
+      <div class="result-card warning">
+        <div class="result-header">⚠️ Target Size Not Reached</div>
+        <p id="warning-message">Could not compress to target size</p>
+      </div>
+    </div>
+
+    <footer>
+      <a href="#" id="btn-clear">Clear & Reset</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

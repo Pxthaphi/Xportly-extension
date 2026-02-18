@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Xportly - Offscreen</title>
+  <script src="lib/jszip.min.js"></script>
+</head>
+<body>
+  <!-- 
+    Offscreen document for image processing
+    Service workers don't have DOM/Canvas access, so we use this
+  -->
+  <canvas id="canvas" style="display: none;"></canvas>
+  <script src="lib/compressor.js"></script>
+  <script src="offscreen.js"></script>
+</body>
+</html>

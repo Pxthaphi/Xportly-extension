@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Xportly",
+  "version": "1.0.0",
+  "description": "Enhance Canva export workflow — change format, compress, and optimize images before downloading.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "offscreen",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.canva.com/*",
+    "https://*.canva.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.canva.com/*", "https://*.canva.cn/*"],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://*.canva.com/*", "https://*.canva.cn/*"]
+    }
+  ]
+}
